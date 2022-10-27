@@ -6,18 +6,35 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>대문 페이지</h1>
-    이름 : {{user}}
-    레벨 : {{data.level}}
-    포인트 : {{data.point}}
-    경험치 : {{data.exp}}
+<center>
+    <h1>list</h1>
+    <table border=1>
+    	<tr>
+    		<th>seq</th>
+    		<th>name</th>
+    		<th>age</th>
+    		<th>hobby</th>
+    		<th>date</th>
+    	</tr>
+    	{% for row in data %}
+    	<tr>
+    		<td>{{row.seq}}</td>
+    		<td>{{row.name}}</td>
+    		<td>{{row.age}}</td>
+    		<td>{{row.hobby}}</td>
+    		<td>{{row.c_date}}</td>
+    		<td><a href="/{{row.seq}}">del</a></td>
+    	</tr>
+    	{% endfor %}
+    </table>
 
+	<br>
     <form action="/" method="post">
         name : <input type="text" name="name"></br>
-        age : <input type="text" name="age"></br>
+        age : <input type="number" min="0" max="9999999" name="age"></br>
         hobby : <input type="text" name="hobby"></br>
         <input type="submit" value="submit">
     </form>
-
+</center>
 </body>
 </html>
